@@ -20,38 +20,42 @@
         }
     </style>
     <script>
-      function cargarDatos() {
-    var archivoCSV = 'datos.csv'; // Nombre de tu archivo CSV
+        function cargarDatos() {
+            var archivoCSV = 'datos.csv'; // Nombre de tu archivo CSV
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var tablaDatos = document.getElementById('tablaDatos');
-                var lineas = xhr.responseText.split('\n');
-                for (var i = 0; i < lineas.length; i++) {
-                    var datos = lineas[i].split(';'); // Usar punto y coma como separador
-                    var fila = tablaDatos.insertRow();
-                    for (var j = 0; j < datos.length; j++) {
-                        var celda = fila.insertCell();
-                        celda.textContent = datos[j];
+            // Nombres de las columnas
+            var nombresColumnas = ["Fecha solicitud", "CV", "Nombre", "Patente", "Estado"];
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var tablaDatos = document.getElementById('tablaDatos');
+                        var lineas = xhr.responseText.split('\n');
+                        for (var i = 0; i < lineas.length; i++) {
+                            var datos = lineas[i].split(';'); // Usar punto y coma como separador
+                            var fila = tablaDatos.insertRow();
+                            for (var j = 0; j < datos.length; j++) {
+                                var celda;
+                                if (i === 0) {
+                                    celda = document.createElement('th'); // Crear elemento th para la primera fila
+                                    celda.textContent = nombresColumnas[j]; // Usar nombres de columnas
+                                } else {
+                                    celda = document.createElement('td'); // Crear elemento td para las filas siguientes
+                                    celda.textContent = datos[j];
+                                }
+                                fila.appendChild(celda);
+                            }
+                        }
+                    } else {
+                        console.error('Error al cargar los datos:', xhr.status);
                     }
                 }
-                // Aplicar negrita a los elementos th de la primera fila
-                var primeraFila = tablaDatos.rows[0];
-                for (var k = 0; k < primeraFila.cells.length; k++) {
-                    primeraFila.cells[k].style.fontWeight = 'bold';
-                }
-            } else {
-                console.error('Error al cargar los datos:', xhr.status);
-            }
+            };
+            xhr.open('GET', archivoCSV, true);
+            xhr.send();
         }
-    };
-    xhr.open('GET', archivoCSV, true);
-    xhr.send();
-}
 
-        
         function filtrarDatos() {
             var filtro = document.getElementById('filtro').value.toUpperCase();
             var tabla = document.getElementById('tablaDatos');
