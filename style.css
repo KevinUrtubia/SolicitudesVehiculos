@@ -1,47 +1,42 @@
+body {
+    background-color: #000073;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 table {
-	margin: 2.5%;
-	width: 95%;
-	box-shadow: 0 0 20px rgba(0,0,0,.4);
-	border: 1px solid #00f9f5;
-  
-  th, td {
+    margin: 2.5%;
+    width: 95%;
+    box-shadow: 0 0 20px rgba(0,0,0,.4);
+    border: 1px solid #00f9f5;
+    color: black;
+}
+
+th, td {
     padding: 15px;
     border: 1px solid #116b6a;
     text-align: center;
-    /*border-left: 0;
-    border-right: 0;*/
-  }
+    color: black;
+}
 
-  th {
+th {
     background-color: #602ff2;
     color: rgb(75, 22, 221);
     font-weight: bold;
-  }
-
-  td {
-    background-color: rgb(255, 255, 255);
-
-  }
 }
 
-body {
-    background-color: #000073; /* Cambia #f0f0f0 al color que desees */
-    margin: 0; /* Para eliminar el margen predeterminado del cuerpo */
-    padding: 0; /* Para eliminar el relleno predeterminado del cuerpo */
+td {
+    background-color: rgb(255, 255, 255);
 }
 
 h1, h2, p, input, button {
-    margin-left: 40px; /* Ajusta el valor según sea necesario */
+    margin-left: 40px;
 }
-body {
-    color: white;
 
-}
-table, th, td {
-    color: black;
-}
 h2 {
-    margin-bottom: 40px; /* Ajusta el valor según sea necesario */
+    margin-bottom: 40px;
 }
 
 table th:first-child {
@@ -50,22 +45,17 @@ table th:first-child {
 
 #imagen-esquina {
     position: fixed;
-    top: 50%; /* Centra verticalmente */
+    top: 100%;
     left: 20px;
-    transform: translate(0, -50%); /* Centra verticalmente */
-    width: 80px; /* Ajusta el ancho según sea necesario */
-    height: auto; /* Mantén la relación de aspecto original */
+    transform: translate(0, -50%);
+    width: 80px;
+    height: auto;
 }
 
-/* Estilo para el título */
 #titulo {
     position: fixed;
-    top: 50%; /* Centra verticalmente */
+    top: 50%;
     left: 20px;
-    transform: translate(0, -50%); /* Centra verticalmente */
-    margin-right: 140px; /* Ajusta el margen derecho para evitar superposición con la imagen */
-}
-
-body {
-    font-family: Arial, sans-serif; /* Cambia Arial por el tipo de letra que desees */
+    transform: translate(0, -50%);
+    margin-right: 140px;
 }
